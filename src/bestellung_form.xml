@@ -1,0 +1,117 @@
+<vxml>
+	<form id="Bestellung">
+		<field name="auswahl">
+			<prompt>Bitte wählen Sie aus:<enumerate /></prompt>
+			<option value="Getraenke">NurGetraenke</option>
+			<option value="Essen">NurEssen</option>
+			<option value="Beides">Beides</option>
+			
+			<filled>
+				<prompt>Sie haben sich für <value expr="auswahl"/> entschieden!</prompt>
+			</filled>
+		</field>
+		
+		<field name="controlAuswahl">
+			<prompt>Stimmt das?<enumerate /></prompt>
+			<option value="ja">Ja</option>
+			<option value="nein">Nein</option>
+			<filled>
+				<if cond="controlAuswahl == 'nein'">
+					<prompt>Sie sagten <value expr ="controlAuswahl"/></prompt>
+					<clear namelist=" auswahl controlAuswahl "/>
+					<goto nextitem= "auswahl" />
+				</if>
+				<if cond="controlAuswahl == 'ja'">
+					<prompt>Sie haben Ihre Auswahl bestätigt!</prompt>
+					<if cond="auswahl == 'Getraenke'">
+						<goto nextitem="Getraenke" />
+					</if>
+					<if cond="auswahl == 'Essen'">
+						<goto nextitem="Essen" />
+					</if>
+					<if cond="auswahl == 'Beides'">
+						<goto nextitem="Beides" />
+					</if>
+				</if>
+			</filled>
+		</field>
+
+		<!--bereiche
+		beides
+		essen
+		getraenke
+	-->
+
+	<field name="Beides">
+		<field name="BeidesGetraenk">
+			<prompt>Was wollen Sie Trinken?<enumerate/></prompt>
+			<option value="cola">Cola</option>
+			<option value="sprite">Sprite</option>
+			<option value="fanta">Fanta</option>
+
+			<filled>
+				<prompt>Sie haben sich fuer <value expr="BeidesGetraenk"/> entschieden</prompt>
+			</filled>
+
+			<field name="BeidesGetraenkeControl"
+				<prompt>Stimmt dass?<enumerate/></field>
+				<option value="ja">Ja</option>
+				<option value="nein">Nein</option>
+
+				<filled>
+					<if cond="BeidesGetrankeControl == 'nein'">
+						<prompt>Bitte waehlen Sie neu!</prompt>
+						<goto nextitem='BeidesGetraenk'/>
+					</if>
+					<if cond="BeidesGetraenkeControl == 'ja'">
+						<goto nextitem='BeidesEssen'/>
+					</if>	
+				</filled>
+			</field>
+		</field> <!--Ende field BeidesGetraenke!!!-->
+		
+		<!--Anfang BeidesEssen-->
+		<field name="BeidesEssen">
+			<prompt>Was moechten Sie essen?<enumerate/></prompt>
+			<option value="hamburger">Hamburger</option>
+			<option value="cheeseburger">Cheeseburger</option>
+			<option value="pommes">Pommes</option>
+
+			<filled>
+				<prompt>Sie haben sich fuer <value expr="BeidesEssen"/> entschieden</prompt>
+			</filled>
+
+			<field name="BeidesEssenControl">
+				<prompt>Stimmt dass?<enumerate/></prompt>
+				<option value="nein">Nein</option>
+				<option value="ja">Ja</option>
+
+				<filled>
+					<if cond="BeidesEssenControl == 'nein'">
+						<prompt>Bitte waehlen Sie neu!</prompt>
+						<goto nextitem='BeidesEssen'/>
+					</if>
+					<if cond="BeidesEssenControl == 'ja'">
+						<goto nextitem="BeidesEnde"/>
+					</if>
+				</filled>
+			</field>
+		</field>
+		<!--Ende BeidesEssen-->
+
+		<!--Auswertung-->
+			<field name="BeidesEnde">
+				<prompt>Vielen Dank, dass Sie <value expr="BeidesTrinken"/> zusammen mit <value expr="BeidesEssen"/> bestellt haben!</prompt>
+			</field>
+		<!--Ende Auswertung-->
+	</field>
+
+	<field name="Getreanke">
+
+	</field>
+
+	<field name="Essen">
+
+	</field>
+	</form>
+</vxml>

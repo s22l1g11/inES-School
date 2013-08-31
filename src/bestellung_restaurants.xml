@@ -1,0 +1,44 @@
+<vxml>
+	<form id="RestaurantAuswahl">
+		<field name="Restaurants">
+			<prompt>Wo moechten Sie Essen gehen?<enumerate /></prompt>
+			<option value="pizzaria">Pizzaria</option>
+			<option value="steakhaus">Steakhaus></option>
+
+			<filled>
+				<prompt>Sie haben sich fuer <value expr="Restaurants"/></prompt>
+			</filled>
+
+			<field name="control">
+				<prompt>Stimmt dass?<enumerate/></prompt>
+				<option value="ja">Ja</option>
+				<option value="nein">Nein</option>
+
+				<filled>
+					<if cond="control == 'ja'">
+						<if cond="Restaurants == 'pizzaria'">
+							<goto next="#Pizzaria"/>
+						</if>
+						<elseif cond="Restaurants == 'steakhaus'">
+							<goto next="#Steakhaus"/>
+						</elseif>
+					</if>
+					<elseif cond="control == 'nein'">
+						<goto nextitem='Restaurants'/>
+					</elseif>
+				</filled>
+			</field>
+		</field>
+	</form>
+
+	<form id="Steakhaus">
+		<field name="Getraenk">
+			<prompt>Was moechten Sie trinken?<enumerate/></prompt>
+			<option value=""
+		</field>
+	</form>
+
+	<form id="Pizzaria">
+
+	</form>
+</vxml>
