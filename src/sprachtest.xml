@@ -1,0 +1,123 @@
+<vxml>
+	<form id="Auswahl">
+		<field name="Menu">
+			<prompt>Bitte waehlen Sie aus:<enumerate/></prompt>
+			<option value="Zielorte">Zielorte</option>
+			<option value="Flugstatus">Flugstatus</option>
+			<option value="Abflugszeit">Abflugszeit</option>
+
+			<filled>
+				<if cond="Menu == 'Zielorte'">
+					<goto next="#formZielorte"/>
+				</if>
+				<if cond="Menu == 'Flugstatus'">
+					<goto next="#formAktuellerFlugstatus"/>
+				</if>
+				<if cond="Menu == 'Abflugszeit'">
+					<goto next="#formAbflugszeit"/>
+				</if>
+			</filled>
+		</field>
+	</form>
+
+	<form id="formZielorte">
+		<field name="Zielorte">
+			<prompt>Bitte waehlen Sie ihr Ziel aus:<enumerate/></prompt>
+			<option value="Mallorca">Mallorca</option>
+			<option value="Minnetonka">Minnetonka</option>
+			<option value="London">London</option>
+
+			<filled>
+				<prompt>Sie fliegen nach: <value expr="Zielorte"/></prompt>
+				<if cond="Zielorte == 'Mallorca'">
+					<prompt>Ihre Reisedauer betraegt: 2h45.
+						Sie fliegen mit Lufthansa (Star Alliance) um 11h50 von HAM nach PMI.
+						Die Kosten belaufen sich auf 256Euro (Hin- und Rueckflug).
+						Viel Spass wuenscht Ihnen,
+						Lukas Tours.
+					</prompt>
+				</if>
+				<if cond="Zielorte == 'Minnetonka'">
+					<prompt>Ihre Reisedauer betraegt: 15h16.
+						Sie fliegen mit Lufthansa (Star Alliance) um 09h40 von HAM nach MSP.
+						Die Kosten belaufen sich auf 1264Euro (Hin- und Rueckflug).
+						Viel Spass wuenscht Ihnen,
+						Lukas Tours.
+					</prompt>
+				</if>
+				<if cond="Zielorte == 'London'">
+					<prompt>Ihre Reisedauer betraegt: 1h45.
+						Sie fliegen mit Lufthansa (Star Alliance) um 07h25 von HAM nach LHR.
+						Die Kosten belaufen sich auf 372Euro (Hin- und Rueckflug).
+						Viel Spass wuenscht Ihnen,
+						Lukas Tours.
+					</prompt>
+				</if>
+			</filled>
+		</field>
+	</form>
+
+	<form id="formAktuellerFlugstatus">
+		<field name="AktuellerFlugstatus">
+			<prompt>Von welchem Flug wollen Sie den aktuellen Status wissen?<enumerate/></prompt>
+			<option value="LH053">LH958</option>
+			<option value="UPS285">UAE76</option>
+			<option value="BER59Z">UPS1</option>
+
+			<filled>
+				<if cond="AktuellerFlugstatus == 'LH958'">
+					<prompt>
+						LH958 hat folgende Daten:
+						Geschwindigkeit: 403kt
+						Hoehe: 30,000ft
+						Flugzeugtyp: Boeing 737-530
+						Von: FRA
+						Nach: BHX
+					</prompt>
+				</if>
+				<if cond="AktuellerFlugstatus == 'UAE76'">
+					<prompt>
+						UAE76 hat folgende Daten:
+						Geschwindigkeit: 512kt
+						Hoehe: 39,000ft
+						Flugzeugtyp: Airbus A380-861
+						Von: CDG
+						Nach: DXB
+					</prompt>
+				</if>
+				<if cond="AktuellerFlugstatus == 'UPS1'">
+					<prompt>
+						UPS1 hat folgende Daten:
+						Geschwindigkeit: 460kt
+						Hoehe: 36,000ft
+						Flugzeugtyp: Boeing 747-44AF
+						Von: HKG
+						Nach: PHL
+					</prompt>
+				</if>
+			</filled>
+		</field>
+	</form>
+
+	<form id="formAbflugszeit">
+		<field name="Abflugszeiten">
+			<prompt>Von welchem Flug wollen Sie die Abflugszeit wissen (Auswahl erfolgt nach dem Zielort)?<enumerate/></prompt>
+			<option value="Mallorca">Mallorca</option>
+			<option value="Minnetonka">Minnetonka</option>
+			<option value="London">London</option>
+
+			<filled>
+				<prompt>Sie fliegen nach: <value expr="Zielorte"/></prompt>
+				<if cond="Abflugszeiten == 'Mallorca'">
+					<prompt>Ihr Flug geht um 11h50.</prompt>
+				</if>
+				<if cond="Abflugszeiten == 'Minnetonka'">
+					<prompt>Ihr Flug geht um 09h40.</prompt>
+				</if>
+				<if cond="Abflugszeiten == 'London'">
+					<prompt>Ihr Flug geht um 07h25.</prompt>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>
