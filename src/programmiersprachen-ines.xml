@@ -1,0 +1,56 @@
+<grammar langid="409" root="START">
+    <rule id="START" scope="public">
+        <token>Ich</token>
+        <ruleref uri="#FLOSEKL"/>
+        <ruleref uri="#ARTIKEL"/>
+        <ruleref uri="#LAND"/>
+        <ruleref uri="#PR?DIKAT"/>
+        <ruleref uri="#ZUGANGSCODE"/>
+		<!--awesome shit-->
+		<tag>
+			out.Land = rule.LAND;
+			out.Artikel = rule.ARTIKEL;
+			out.Pr?dikat = rule.PR?DIKAT;
+		</tag>
+    </rule>
+    <rule id="FLOSKEL">
+        <one-of>
+            <item>moechte</item>
+            <item>will</item>
+        </one-of>
+    </rule>
+    <rule id="LAND">
+        <one-of>
+            <item>USA</item>
+            <item>Neuseeland</item>
+            <item>Australien</item>
+            <item>Angela Merkel</item>
+            <item>David Cameron</item>
+            <item>Keith B. Alexander</item>
+        </one-of>
+    </rule>
+    <rule id="ARTIKEL">
+        <one-of>
+            <item>
+                <ruleref special="NULL"/>
+            </item>
+            <item>die</item>
+            <item>den</item>
+        </one-of>
+    </rule>
+    <rule id="PR?DIKAT">
+        <one-of>
+            <item>?berwachen</item>
+            <item>ausspionieren</item>
+            <item>t?ten</item>
+            <item>vernichten</item>
+        </one-of>
+    </rule>
+    <rule id="ZUGANGSCODE">
+        <one-of>
+            <item>2011</item>
+            <item>1952</item>
+            <item>1983</item>
+        </one-of>
+    </rule>
+</grammar>

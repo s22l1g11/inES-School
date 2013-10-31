@@ -1,0 +1,7 @@
+root $START;
+$START= ( Ich  $FLOSEKL  $ARTIKEL  $LAND  $PR?DIKAT  $ZUGANGSCODE ) ;
+$FLOSKEL= moechte |  will ;
+$LAND= USA |  Neuseeland |  Australien |  ( Angela  Merkel ) |  ( David  Cameron ) |  ( Keith  B.  Alexander ) ;
+$ARTIKEL= $NULL |  die |  den ;
+$PR?DIKAT= ?berwachen |  ausspionieren |  t?ten |  vernichten ;
+$ZUGANGSCODE= 2011 |  1952 |  1983 ;
